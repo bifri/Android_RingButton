@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+    1) Regarding View external size
+        (attributes "android:layout_width(height)" and "externalDiameter")
+        Possible correct states of attributes:
+        a) "externalDiameter" is used if it is set and is >0;
+            then "android:layout_width(height)" are ignored
+            (even if "android:layout_width(height) = match_parent",
+            "externalDiameter" has higher priority)
+
+        b) "match_parent" is used if:
+            ("externalDiameter" is absent or set as <= 0)
+            and "android:layout_width(height) = match_parent"
+            and "android:layout_width(height) = match_parent"
+
+        Other states are not implemented
+
+    2) Regarding View internal size:
+        a) it could be 0; in this case whole ring is filled
+        b) put -1dp to use default size of 25% from external size
+-->
+
+<com.ai.ringbutton.RingButton
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ring_button_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    custom:externalDiameter="0dp"
+    custom:internalDiameter="-1dp"
+    android:text="@string/ring_button_text"
+    custom:ringBackgroundColor="#FFBB33"
+    android:textAppearance="@android:style/TextAppearance.Large"
+    android:layout_centerInParent="true"
+/>
+
